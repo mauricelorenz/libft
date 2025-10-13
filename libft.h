@@ -6,15 +6,13 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:10:44 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/13 17:39:37 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/13 19:45:50 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stddef.h>
-# include <string.h>
-# include <strings.h>
 
 void	ft_bzero(void *s, size_t n);
 int		ft_isalnum(int c);
