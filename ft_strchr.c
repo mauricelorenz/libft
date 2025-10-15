@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 20:01:17 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/14 20:32:12 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/15 12:16:47 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@ char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{
-		if (*s == (unsigned char)c)
+		if ((unsigned char)*s == (unsigned char)c)
 			return ((char *)s);
 		s++;
 	}
