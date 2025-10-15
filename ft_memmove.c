@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 15:42:57 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/13 19:55:16 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/15 11:19:01 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	char	*char_src;
 
 	i = 0;
-	char_dest = (char *) dest;
-	char_src = (char *) src;
+	char_dest = (char *)dest;
+	char_src = (char *)src;
 	if (src == dest)
 		return (dest);
 	else if (src > dest)

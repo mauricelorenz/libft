@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 16:42:17 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/09 17:45:59 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/15 11:18:09 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;
-	char	*char_ptr;
+	char	*char_s;
 
 	i = 0;
-	char_ptr = (char *) s;
+	char_s = (char *)s;
 	while (i++ < n)
-		*char_ptr++ = 0;
+		*char_s++ = 0;
 }
 
 // #include <stdio.h>

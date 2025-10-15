@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:52:44 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/13 19:17:12 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/15 11:18:44 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char	*char_src;
 
 	i = 0;
-	char_dest = (char *) dest;
-	char_src = (char *) src;
+	char_dest = (char *)dest;
+	char_src = (char *)src;
 	if (!dest && !src)
 		return (0);
 	while (i++ < n)
