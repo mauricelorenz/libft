@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 15:00:27 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/16 16:37:07 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/16 17:55:47 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ char	*ft_strdup(const char *s)
 	char	*t_orig;
 
 	t = malloc(ft_strlen(s) + 1);
-	t_orig = t;
 	if (!t)
 		return (0);
+	t_orig = t;
 	while (*s)
 		*t++ = *s++;
 	*t = '\0';
