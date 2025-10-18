@@ -6,133 +6,81 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:30:16 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/18 16:51:46 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/18 22:43:21 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t		ft_strcount(char const *s, char c);
-static size_t		ft_dlmtr_strlen(char const *s, char c);
-static void			ft_free_split(char **t_orig, size_t i);
-static int			ft_malloc_members(char **t, char **t_orig,
-						size_t i, size_t t_member_len);
-static char const	*ft_copy_members(char const *s, char **t, char c);
+static size_t	ft_word_count(char const *s, char c);
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
-	size_t	t_len;
+	size_t	word_len;
 	char	**t;
 	char	**t_orig;
 
-	i = 0;
-	t_len = ft_strcount(s, c);
-	t = malloc(sizeof(char *) * (t_len + 1));
+	t = malloc(sizeof(char *) * (ft_word_count(s, c) + 1));
 	if (!t)
 		return (0);
 	t_orig = t;
-	while (i < t_len)
+	while (*s)
 	{
-		while (*s == c)
+		word_len = 0;
+		while (*s && *s == c)
 			s++;
-		if (ft_dlmtr_strlen(s, c))
+		while (*s && *s != c)
 		{
-			if (!ft_malloc_members(t, t_orig, i, ft_dlmtr_strlen(s, c)))
-				return (0);
-			s = ft_copy_members(s, t, c);
-			i++;
+			word_len++;
+			s++;
 		}
+		if (!word_len)
+			continue ;
+		*t = malloc(word_len + 1);
+		if (!*t)
+		{
+			while (t >= t_orig)
+			{
+				free(*t);
+				t--;
+			}
+			free(t_orig);
+			return (0);
+		}
+		s -= word_len;
+		while (*s && *s != c)
+		{
+			**t = *s;
+			(*t)++;
+			s++;
+		}
+		**t = '\0';
+		*t -= word_len;
 		t++;
 	}
 	*t = 0;
 	return (t_orig);
 }
 
-static size_t	ft_strcount(char const *s, char c)
+static size_t	ft_word_count(char const *s, char c)
 {
-	size_t	i;
-	int		in_string;
+	size_t	count;
 
-	i = 0;
-	if (!*s)
+	count = 0;
+	if (!s)
 		return (0);
-	if (c == '\0')
+	if (!c)
 		return (1);
 	while (*s)
 	{
-		in_string = 0;
-		if (*s != c)
-			in_string = 1;
-		s++;
-		if (*s == c && in_string)
-			i++;
+		while (*s && *s == c)
+			s++;
+		if (*s && *s != c)
+			count++;
+		while (*s && *s != c)
+			s++;
 	}
-	if (*(s - 1) != c)
-		i++;
-	return (i);
-}
-
-static size_t	ft_dlmtr_strlen(char const *s, char c)
-{
-	size_t	i;
-
-	i = 0;
-	while (*s && *s != c)
-	{
-		i++;
-		s++;
-	}
-	return (i);
-}
-
-static void	ft_free_split(char **t_orig, size_t i)
-{
-	size_t	free_i;
-	char	**curr;
-
-	curr = t_orig;
-	free_i = 0;
-	while (free_i++ < i)
-	{
-		free(*curr);
-		*curr = 0;
-		curr++;
-	}
-	free(t_orig);
-	t_orig = 0;
-}
-
-static int	ft_malloc_members(char **t, char **t_orig,
-	size_t i, size_t t_member_len)
-{
-	*t = malloc(t_member_len + 1);
-	if (!*t)
-	{
-		ft_free_split(t_orig, i);
-		return (0);
-	}
-	return (1);
-}
-
-static char const	*ft_copy_members(char const *s, char **t, char c)
-{
-	size_t	j;
-	size_t	t_member_len;
-	char	*t_member_orig;
-
-	j = 0;
-	t_member_len = ft_dlmtr_strlen(s, c);
-	t_member_orig = *t;
-	while (j++ < t_member_len)
-	{
-		**t = *s;
-		(*t)++;
-		s++;
-	}
-	**t = '\0';
-	*t = t_member_orig;
-	return (s);
+	return (count);
 }
 
 // #include <stddef.h>
@@ -141,22 +89,14 @@ static char const	*ft_copy_members(char const *s, char **t, char c)
 
 // int	main(void)
 // {
-// 	char	s[] = "foo,bar,baz";
-// 	char	c = ',';
+// 	char	s[] = "\t\t\t\thello\t\t\t\t";
+// 	char	c = '\t';
 // 	char	**t = ft_split(s, c);
 // 	char	**t_orig;
 
-// 	// printf("%li\n%li\n", ft_strcount(s, c), ft_dlmtr_strlen(s, c));
+// 	printf("%li\n", ft_word_count(s, c));
+// 	printf("%s\n%s\n%s\n", *t, *(t + 1), *(t + 2));
 // 	t_orig = t;
-// 	while (*t)
-// 	{
-// 		if (**t == '\0')
-// 			printf("\\0\n");
-// 		else
-// 			printf("%s\n", *t);
-// 		t++;
-// 	}
-// 	t = t_orig;
 // 	while (*t)
 // 	{
 // 		free(*t);
@@ -165,11 +105,3 @@ static char const	*ft_copy_members(char const *s, char **t, char c)
 // 	free(t_orig);
 // 	return (0);
 // }
-
-// Result Roadmap Required variables Edgecases Test
-// R: return a null-terminated array of strings split at char c
-// R: create and malloc double pointer, iterate over source string s,
-//    malloc length for every new string, copy new strings
-// R: vars -> t (double pointer), i (iterator)
-// E: empty s, empty c, failed malloc
-// T: "a,b,c", ",", expect "a","b","c"
