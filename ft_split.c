@@ -6,25 +6,25 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:30:16 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/17 23:39:34 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/18 16:51:46 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_strcount(char const *s, char c);
-static size_t	ft_dlmtr_strlen(char const *s, char c);
-static void		ft_free_split(char **t_orig, size_t i);
+static size_t		ft_strcount(char const *s, char c);
+static size_t		ft_dlmtr_strlen(char const *s, char c);
+static void			ft_free_split(char **t_orig, size_t i);
+static int			ft_malloc_members(char **t, char **t_orig,
+						size_t i, size_t t_member_len);
+static char const	*ft_copy_members(char const *s, char **t, char c);
 
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
-	size_t	j;
 	size_t	t_len;
-	size_t	t_member_len;
 	char	**t;
 	char	**t_orig;
-	char	*t_member_orig;
 
 	i = 0;
 	t_len = ft_strcount(s, c);
@@ -36,25 +36,11 @@ char	**ft_split(char const *s, char c)
 	{
 		while (*s == c)
 			s++;
-		j = 0;
-		t_member_len = ft_dlmtr_strlen(s, c);
-		if (t_member_len)
+		if (ft_dlmtr_strlen(s, c))
 		{
-			*t = malloc(t_member_len + 1);
-			if (!*t)
-			{
-				ft_free_split(t_orig, i);
+			if (!ft_malloc_members(t, t_orig, i, ft_dlmtr_strlen(s, c)))
 				return (0);
-			}
-			t_member_orig = *t;
-			while (j++ < t_member_len)
-			{
-				**t = *s;
-				(*t)++;
-				s++;
-			}
-			**t = '\0';
-			*t = t_member_orig;
+			s = ft_copy_members(s, t, c);
 			i++;
 		}
 		t++;
@@ -117,18 +103,50 @@ static void	ft_free_split(char **t_orig, size_t i)
 	t_orig = 0;
 }
 
+static int	ft_malloc_members(char **t, char **t_orig,
+	size_t i, size_t t_member_len)
+{
+	*t = malloc(t_member_len + 1);
+	if (!*t)
+	{
+		ft_free_split(t_orig, i);
+		return (0);
+	}
+	return (1);
+}
+
+static char const	*ft_copy_members(char const *s, char **t, char c)
+{
+	size_t	j;
+	size_t	t_member_len;
+	char	*t_member_orig;
+
+	j = 0;
+	t_member_len = ft_dlmtr_strlen(s, c);
+	t_member_orig = *t;
+	while (j++ < t_member_len)
+	{
+		**t = *s;
+		(*t)++;
+		s++;
+	}
+	**t = '\0';
+	*t = t_member_orig;
+	return (s);
+}
+
 // #include <stddef.h>
 // #include <stdio.h>
 // #include <stdlib.h>
 
 // int	main(void)
 // {
-// 	char	s[] = "";
-// 	char	c = 'z';
-// 	// printf("%li\n%li\n", ft_strcount(s, c), ft_dlmtr_strlen(s, c));
+// 	char	s[] = "foo,bar,baz";
+// 	char	c = ',';
 // 	char	**t = ft_split(s, c);
 // 	char	**t_orig;
 
+// 	// printf("%li\n%li\n", ft_strcount(s, c), ft_dlmtr_strlen(s, c));
 // 	t_orig = t;
 // 	while (*t)
 // 	{
