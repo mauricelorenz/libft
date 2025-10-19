@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 18:44:40 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/16 18:54:48 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/19 22:13:28 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	*s3 = '\0';
 	return (s3_orig);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char	s1[] = "Hello, ";
-// 	char	s2[] = "42Heilbronn";
-
-// 	printf("%s + %s = %s\n", s1, s2, ft_strjoin(s1, s2));
-// }

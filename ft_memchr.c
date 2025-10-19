@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:55:03 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/15 12:44:45 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/19 22:10:20 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (0);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-
-// int	main(void)
-// {
-// 	char	s[] = {0, 1, 2, 3, 4, 5};
-// 	int		c = 2 + 256;
-// 	size_t	n = 3;
-
-// 	printf("s:  %p\nft: %p\nst: %p\n", s, ft_memchr(s, c, n), memchr(s, c, n));
-// }

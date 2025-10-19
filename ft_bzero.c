@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 16:42:17 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/15 11:18:09 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/19 22:04:03 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,3 @@ void	ft_bzero(void *s, size_t n)
 	while (i++ < n)
 		*char_s++ = 0;
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char	s[] = "42Heilbronn";
-
-// 	ft_bzero(s, 5);
-// 	for (int i = 0; i < 10; i++)
-// 	{
-// 		if (s[i])
-// 			printf("%c\n", s[i]);
-// 		else
-// 			printf("NULL\n");
-// 	}
-// }

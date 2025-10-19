@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:54:40 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/14 12:29:49 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/19 22:13:43 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,3 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	printf("%li\n", ft_strlen("42Heilbronn"));
-// }

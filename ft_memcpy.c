@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:52:44 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/15 11:18:44 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/19 22:10:52 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		*char_dest++ = *char_src++;
 	return (dest);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char	s[] = "42Heilbronn";
-// 	char	t[20];
-
-// 	ft_memcpy(t, s, 5);
-// 	printf("%s\n", t);
-// }

@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 21:36:10 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/19 21:37:36 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/19 22:11:21 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,3 @@ void	ft_putendl_fd(char *s, int fd)
 	}
 	write(fd, "\n", 1);
 }
-
-// #include <stddef.h>
-// #include <stdio.h>
-// #include <stdlib.h>
-
-// int	main(void)
-// {
-// 	ft_putendl_fd("42Heilbronn", 1);
-// 	return (0);
-// }

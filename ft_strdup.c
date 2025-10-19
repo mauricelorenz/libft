@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 15:00:27 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/16 17:55:47 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/19 22:13:11 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,3 @@ char	*ft_strdup(const char *s)
 	*t = '\0';
 	return (t_orig);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-
-// int	main(void)
-// {
-// 	char	s[] = "42Heilbronn";
-// 	char	*t = ft_strdup(s);
-// 	char	*u = strdup(s);
-
-// 	printf("or: %s\nft: %s\nst: %s\n", s, t, u);
-// }

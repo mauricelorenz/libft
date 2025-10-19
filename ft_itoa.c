@@ -6,14 +6,14 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 14:00:25 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/19 16:32:38 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/19 22:10:05 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_nlen(int n);
-static void		ft_copyn(int n, char *str_n, size_t len_n);
+static size_t	nlen(int n);
+static void		copyn(int n, char *str_n, size_t len_n);
 
 char	*ft_itoa(int n)
 {
@@ -24,15 +24,15 @@ char	*ft_itoa(int n)
 		return (ft_strdup("-2147483648"));
 	if (n == 0)
 		return (ft_strdup("0"));
-	len_n = ft_nlen(n);
+	len_n = nlen(n);
 	str_n = malloc(len_n + 1);
 	if (!str_n)
 		return (0);
-	ft_copyn(n, str_n, len_n);
+	copyn(n, str_n, len_n);
 	return (str_n);
 }
 
-static size_t	ft_nlen(int n)
+static size_t	nlen(int n)
 {
 	size_t	i;
 
@@ -47,7 +47,7 @@ static size_t	ft_nlen(int n)
 	return (i);
 }
 
-static void	ft_copyn(int n, char *str_n, size_t len_n)
+static void	copyn(int n, char *str_n, size_t len_n)
 {
 	if (n < 0)
 	{
@@ -63,16 +63,3 @@ static void	ft_copyn(int n, char *str_n, size_t len_n)
 		n /= 10;
 	}
 }
-
-// #include <stddef.h>
-// #include <stdio.h>
-// #include <stdlib.h>
-
-// int	main(void)
-// {
-// 	int	n = -1;
-
-// 	printf("%li\n", ft_nlen(n));
-// 	printf("%s\n", ft_itoa(n));
-// 	return (0);
-// }

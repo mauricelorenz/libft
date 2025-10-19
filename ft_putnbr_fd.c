@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 21:38:54 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/19 21:56:34 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/19 22:11:24 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,3 @@ void	ft_putnbr_fd(int n, int fd)
 	n = n % 10 + '0';
 	write(fd, &n, 1);
 }
-
-// #include <stddef.h>
-// #include <stdio.h>
-// #include <stdlib.h>
-
-// int	main(void)
-// {
-// 	ft_putnbr_fd(42, 1);
-// 	return (0);
-// }

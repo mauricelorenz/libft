@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:56:46 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/15 11:19:29 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/19 22:11:08 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,3 @@ void	*ft_memset(void *s, int c, size_t n)
 		*char_s++ = c;
 	return (s);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char	s[] = "42Heilbronn";
-// 	char	*result = ft_memset(s, 'x', 5);
-
-// 	printf("%s\n", result);
-// }

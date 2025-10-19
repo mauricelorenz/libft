@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 20:01:17 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/15 12:16:47 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/19 22:13:07 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,3 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s);
 	return (0);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char	s[] = "abcdefg";
-// 	int		c = 'a' + 256;
-
-// 	printf("s: %p\nr: %p\n", s, ft_strchr(s, c));
-// }
