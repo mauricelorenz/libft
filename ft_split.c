@@ -6,13 +6,17 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:30:16 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/18 22:43:21 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/19 13:45:10 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_word_count(char const *s, char c);
+static size_t		ft_word_count(char const *s, char c);
+static char const	*ft_word_len_count(char const *s,
+						char c, size_t *word_len_ptr);
+static void			ft_free_all(char **t, char **t_orig);
+static char const	*ft_word_copy(char *t_word, char const *s, char c);
 
 char	**ft_split(char const *s, char c)
 {
@@ -27,35 +31,13 @@ char	**ft_split(char const *s, char c)
 	while (*s)
 	{
 		word_len = 0;
-		while (*s && *s == c)
-			s++;
-		while (*s && *s != c)
-		{
-			word_len++;
-			s++;
-		}
+		s = ft_word_len_count(s, c, &word_len);
 		if (!word_len)
 			continue ;
 		*t = malloc(word_len + 1);
 		if (!*t)
-		{
-			while (t >= t_orig)
-			{
-				free(*t);
-				t--;
-			}
-			free(t_orig);
-			return (0);
-		}
-		s -= word_len;
-		while (*s && *s != c)
-		{
-			**t = *s;
-			(*t)++;
-			s++;
-		}
-		**t = '\0';
-		*t -= word_len;
+			return (ft_free_all(t, t_orig), (char **)0);
+		s = ft_word_copy(*t, s - word_len, c);
 		t++;
 	}
 	*t = 0;
@@ -83,14 +65,49 @@ static size_t	ft_word_count(char const *s, char c)
 	return (count);
 }
 
+static char const	*ft_word_len_count(char const *s,
+						char c, size_t *word_len_ptr)
+{
+	while (*s && *s == c)
+		s++;
+	while (*s && *s != c)
+	{
+		(*word_len_ptr)++;
+		s++;
+	}
+	return (s);
+}
+
+static void	ft_free_all(char **t, char **t_orig)
+{
+	while (t >= t_orig)
+	{
+		free(*t);
+		t--;
+	}
+	free(t_orig);
+}
+
+static char const	*ft_word_copy(char *t_word, char const *s, char c)
+{
+	while (*s && *s != c)
+	{
+		*t_word = *s;
+		t_word++;
+		s++;
+	}
+	*t_word = '\0';
+	return (s);
+}
+
 // #include <stddef.h>
 // #include <stdio.h>
 // #include <stdlib.h>
 
 // int	main(void)
 // {
-// 	char	s[] = "\t\t\t\thello\t\t\t\t";
-// 	char	c = '\t';
+// 	char	s[] = "foo,bar,baz";
+// 	char	c = ',';
 // 	char	**t = ft_split(s, c);
 // 	char	**t_orig;
 
