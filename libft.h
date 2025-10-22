@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:10:44 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/22 15:09:23 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/22 17:05:42 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,10 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-
+t_list	*ft_lstnew(void *content);
 #endif

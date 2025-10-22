@@ -35,7 +35,7 @@ SRC =		ft_atoi.c \
 			ft_tolower.c \
 			ft_toupper.c
 
-SRC_BONUS =	
+SRC_BONUS =	ft_lstnew_bonus.c
 
 OBJ =		$(SRC:.c=.o)
 
