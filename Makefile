@@ -35,7 +35,11 @@ SRC =		ft_atoi.c \
 			ft_tolower.c \
 			ft_toupper.c
 
+SRC_BONUS =	
+
 OBJ =		$(SRC:.c=.o)
+
+OBJ_BONUS =	$(SRC_BONUS:.c=.o)
 
 CC =		cc
 
@@ -45,6 +49,9 @@ all:		$(NAME)
 
 $(NAME):	$(OBJ)
 			ar rcs $(NAME) $(OBJ)
+
+bonus:		$(OBJ) $(OBJ_BONUS)
+			ar rcs $(NAME) $(OBJ) $(OBJ_BONUS)
 
 %.o:		%.c
 			$(CC) $(CFLAGS) -c $< -o $@
