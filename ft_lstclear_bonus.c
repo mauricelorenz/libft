@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 19:07:40 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/23 20:39:08 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/24 22:05:19 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*curr_next;
 
+	if (!lst || !del)
+		return ;
 	while (*lst)
 	{
 		del((*lst)->content);

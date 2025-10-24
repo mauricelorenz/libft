@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 22:53:00 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/22 23:16:44 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/24 21:55:53 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
+	if (!lst || !new)
+		return ;
 	if (!*lst)
 		*lst = new;
 	else
