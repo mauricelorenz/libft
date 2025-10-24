@@ -49,17 +49,20 @@ OBJ =		$(SRC:.c=.o)
 
 OBJ_BONUS =	$(SRC_BONUS:.c=.o)
 
+OBJS =		$(OBJ)
+
 CC =		cc
 
 CFLAGS =	-Wall -Wextra -Werror
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ)
-			ar rcs $(NAME) $(OBJ)
+bonus:	OBJS := $(OBJ) $(OBJ_BONUS)
 
-bonus:		$(OBJ) $(OBJ_BONUS)
-			ar rcs $(NAME) $(OBJ) $(OBJ_BONUS)
+bonus:		$(OBJ_BONUS) $(NAME)
+
+$(NAME):	$(OBJS)
+			ar rcs $(NAME) $(OBJS)
 
 %.o:		%.c
 			$(CC) $(CFLAGS) -c $< -o $@
