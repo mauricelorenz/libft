@@ -49,20 +49,20 @@ OBJ =		$(SRC:.c=.o)
 
 OBJ_BONUS =	$(SRC_BONUS:.c=.o)
 
-OBJS =		$(OBJ)
-
 CC =		cc
 
 CFLAGS =	-Wall -Wextra -Werror
 
 all:		$(NAME)
 
-bonus:	OBJS := $(OBJ) $(OBJ_BONUS)
+$(NAME):	$(OBJ)
+			ar rcs $(NAME) $(OBJ)
 
-bonus:		$(OBJ_BONUS) $(NAME)
+bonus:		.bonus
 
-$(NAME):	$(OBJS)
-			ar rcs $(NAME) $(OBJS)
+.bonus:		$(OBJ) $(OBJ_BONUS)
+			ar rcs $(NAME) $(OBJ) $(OBJ_BONUS)
+			@touch .bonus
 
 %.o:		%.c
 			$(CC) $(CFLAGS) -c $< -o $@
@@ -71,7 +71,7 @@ clean:
 			rm -f $(OBJ) $(OBJ_BONUS)
 
 fclean:		clean
-			rm -f $(NAME)
+			rm -f $(NAME) .bonus
 
 re:			fclean all
 
